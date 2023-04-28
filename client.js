@@ -28,7 +28,7 @@ sendButton.addEventListener('click', () => {
 
 connectButton.addEventListener('click', () => {
   if (!socket || socket.readyState === WebSocket.CLOSED) {
-    socket = new WebSocket('ws://web-socket-app.herokuapp.com');
+    socket = new WebSocket('ws://localhost:8080');
     socket.addEventListener('open', () => {
       showMessage('Connected to the server');
     });
