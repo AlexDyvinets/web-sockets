@@ -37,7 +37,7 @@ wss.on('connection', (socket) => {
   }, 15000);
 });
 
-server.on('close', () => {
+wss.on('close', () => {
   console.log('Server shutting down');
 
   // Очищаем таймер перед закрытием сервера
