@@ -1,13 +1,11 @@
 const WebSocket = require('ws');
-const http = require('http');
 
-const server = http.createServer();
-const wss = new WebSocket.Server({ server });
+const server = new WebSocket.Server({ port: 8080 });
 
 let messageCount = 0;
 let messageTimer;
 
-wss.on('connection', (socket) => {
+server.on('connection', (socket) => {
   console.log('Client connected');
 
   socket.on('message', (message) => {
@@ -17,7 +15,7 @@ wss.on('connection', (socket) => {
       message = message.toString();
     }
 
-    if (message.match(/^[a-zA-Z\s]+$/)) {
+    if (message.match(/^[A-Za-z]+$/)) {
       messageCount++;
       socket.send('Your message is valid.');
     } else {
@@ -35,14 +33,9 @@ wss.on('connection', (socket) => {
   }, 15000);
 });
 
-wss.on('close', () => {
+server.on('close', () => {
   console.log('Server shutting down');
 
   // Очищаем таймер перед закрытием сервера
   clearInterval(messageTimer);
-});
-
-const PORT = process.env.PORT || 8080;
-server.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
 });
