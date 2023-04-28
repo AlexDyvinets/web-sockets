@@ -1,11 +1,17 @@
 const WebSocket = require('ws');
 
-const server = new WebSocket.Server({ port: 8080 });
+const WebSocket = require('ws');
+const WebSocketServer = WebSocket.Server;
+
+const wss = new WebSocketServer({ port: 8080 });
+
+
+// const server = new WebSocket.Server({ port: 8080 });
 
 let messageCount = 0;
 let messageTimer;
 
-server.on('connection', (socket) => {
+wss.on('connection', (socket) => {
   console.log('Client connected');
 
   socket.on('message', (message) => {
