@@ -1,15 +1,12 @@
 const WebSocket = require('ws');
 const WebSocketServer = WebSocket.Server;
 
-const wss = new WebSocketServer({ port: 8080 });
-
-
-// const server = new WebSocket.Server({ port: 8080 });
+const server = new WebSocket.Server({ port: 8080 });
 
 let messageCount = 0;
 let messageTimer;
 
-wss.on('connection', (socket) => {
+server.on('connection', (socket) => {
   console.log('Client connected');
 
   socket.on('message', (message) => {
@@ -37,7 +34,7 @@ wss.on('connection', (socket) => {
   }, 15000);
 });
 
-wss.on('close', () => {
+server.on('close', () => {
   console.log('Server shutting down');
 
   // Очищаем таймер перед закрытием сервера
