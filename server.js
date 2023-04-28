@@ -1,6 +1,6 @@
 const WebSocket = require('ws');
 
-const server = new WebSocket.Server({ port: 8080 });
+const server = new WebSocket.Server();
 
 let messageCount = 0;
 let messageTimer;
@@ -38,4 +38,9 @@ server.on('close', () => {
 
   // Очищаем таймер перед закрытием сервера
   clearInterval(messageTimer);
+});
+
+const PORT = process.env.PORT || 8080;
+server.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
 });
