@@ -41,7 +41,6 @@ connectButton.addEventListener('click', () => {
     });
   } else if (socket.readyState === WebSocket.CONNECTING) {
     showMessage('Connecting to the server...');
-    // You can add a delay here before checking the readyState again
     setTimeout(() => {
       if (socket.readyState === WebSocket.OPEN) {
         showMessage('Connected to the server');
