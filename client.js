@@ -28,7 +28,7 @@ sendButton.addEventListener('click', () => {
 
 connectButton.addEventListener('click', () => {
   if (!socket || socket.readyState === WebSocket.CLOSED) {
-    socket = new WebSocket('ws://localhost:8080');
+    socket = new WebSocket('ws://ec2-3-78-20-30.eu-central-1.compute.amazonaws.com:8080');
     socket.addEventListener('open', () => {
       showMessage('Connected to the server');
     });
@@ -39,10 +39,21 @@ connectButton.addEventListener('click', () => {
     socket.addEventListener('close', () => {
       showMessage('Disconnected from the server');
     });
+  } else if (socket.readyState === WebSocket.CONNECTING) {
+    showMessage('Connecting to the server...');
+    // You can add a delay here before checking the readyState again
+    setTimeout(() => {
+      if (socket.readyState === WebSocket.OPEN) {
+        showMessage('Connected to the server');
+      } else {
+        showMessage('Could not connect to the server');
+      }
+    }, 1000); // Adjust the delay time as needed
   } else {
     showMessage('You are already connected to the server');
   }
 });
+
 
 disconnectButton.addEventListener('click', () => {
   if (socket && socket.readyState !== WebSocket.CLOSED) {
