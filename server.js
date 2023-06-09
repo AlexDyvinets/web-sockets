@@ -1,7 +1,7 @@
-const WebSocket = require('wss');
+const WebSocket = require('ws');
 const WebSocketServer = WebSocket.Server;
 
-const server = new WebSocket.Server({ port: 8443 });
+const server = new WebSocket.Server({ port: 8443, secure: true });
 
 let messageCount = 0;
 let messageTimer;
