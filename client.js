@@ -28,7 +28,7 @@ sendButton.addEventListener('click', () => {
 
 connectButton.addEventListener('click', () => {
   if (!socket || socket.readyState === WebSocket.CLOSED) {
-    socket = new WebSocket('ws://ec2-3-78-20-30.eu-central-1.compute.amazonaws.com:8080');
+    socket = new WebSocket('wss://ec2-3-78-20-30.eu-central-1.compute.amazonaws.com:8443');
     socket.addEventListener('open', () => {
       showMessage('Connected to the server');
     });
