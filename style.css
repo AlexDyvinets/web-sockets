@@ -1,7 +1,135 @@
+html{
+  font-family: 'Roboto Mono', monospace;
+}
+
 #output {
-  width: 400px;
-  height: 200px;
-  overflow: auto;
-  border: 1px solid black;
-  padding: 5px;
+min-width: 30%;
+height: 600px;
+overflow: scroll;
+padding: 5px 5px 5px 15px;
+border: #000000 10px solid;
+color: white;
+position: relative;
+border-radius: 33px;
+background-image: url('https://phonoteka.org/uploads/posts/2021-04/thumbs/1618485168_49-p-fon-dlya-telegramm-chata-51.png');
+}
+
+
+h1{
+  text-align: center;
+  margin-top: 0;
+  text-transform: uppercase;
+}
+
+p {
+  position: relative;
+  width: 235px;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: rgb(85, 85, 255);
+  margin-bottom: 20px;
+}
+
+p::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 1px;
+  margin-right: -10px; /* Добавленный отступ */
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 10px 0 0;
+  border-color: rgb(85, 85, 255) transparent transparent transparent;
+}
+
+.container{
+  max-width: 1000px;
+  margin: 2% auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.connection_area{
+  margin: 0px auto 30px;
+}
+
+.action_area{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 45%;
+}
+
+.main_area{
+  display: flex;
+  width: 100%;
+  margin: 10px auto;
+  justify-content: space-between;
+}
+
+
+#input{
+  border: 1px black solid;
+  margin-bottom: 20px;
+  border: 1px solid #cccccc; 
+  border-radius: 3px; 
+  -webkit-border-radius: 3px; 
+  -moz-border-radius: 3px;
+  -khtml-border-radius: 3px; 
+  background: #ffffff !important; 
+  outline: none; 
+  height: 24px; 
+  color: #000000; 
+  font-size: 14px; 
+}
+
+#send{
+  background-color: rgba(29, 181, 255, 1);
+  width: 50%;
+  height: 40px;
+  border-radius: 25px;
+  border: 0;
+  margin: 0 auto;
+
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+
+  -webkit-box-shadow: 3px 5px 26px -6px rgba(0,0,0,0.75);
+  -moz-box-shadow: 3px 5px 26px -6px rgba(0,0,0,0.75);
+  box-shadow: 3px 5px 26px -6px rgba(0,0,0,0.75);
+}
+
+
+#send:hover{
+  background-color: rgb(59, 188, 252);
+  cursor: pointer;
+  width: 51%;
+}
+
+.connection_buttons{
+  background-color: transparent;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #3B3B3B;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+}
+
+#connect{
+  margin-right: 20px;
+}
+
+.connection_buttons:hover{
+  background-color: #000000;
+  color: white;
 }

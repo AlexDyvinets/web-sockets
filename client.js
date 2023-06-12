@@ -10,6 +10,7 @@ function showMessage(message) {
   const p = document.createElement('p');
   p.innerText = message;
   output.appendChild(p);
+  p.scrollIntoView({ behavior: 'smooth', block: 'end' });
 }
 
 sendButton.addEventListener('click', () => {
@@ -67,3 +68,5 @@ input.addEventListener('keydown', (event) => {
     sendButton.click();
   }
 });
+
+

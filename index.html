@@ -3,13 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>WebSocket App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="output"></div>
-  <input type="text" id="input">
-  <button id="send">Send</button>
-  <button id="connect">Connect</button>
-  <button id="disconnect">Disconnect</button>
+  <div class="container">
+    <h1>To test websockets, just click connect</h1>
+    <div class="connection_area">
+      <button class='connection_buttons' id="connect">Connect</button>
+      <button class='connection_buttons' id="disconnect">Disconnect</button>
+    </div>
+    <div class="main_area">
+      <div id="output"></div>
+      <div class="action_area">
+        <input type="text" id="input">
+        <button id="send">Send</button>
+      </div>
+    </div>
+  </div>
   <script src="client.js"></script>
 </body>
 </html>
