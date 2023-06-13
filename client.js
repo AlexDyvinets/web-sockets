@@ -6,18 +6,22 @@ const disconnectButton = document.getElementById('disconnect');
 
 let socket = null;
 
-function showMessage(message) {
-  const p = document.createElement('p');
-  p.innerText = message;
-  output.appendChild(p);
-  p.scrollIntoView({ behavior: 'smooth', block: 'end' });
+function showMessage(message, isUserMessage = false) {
+  const div = document.createElement('p');
+  div.innerText = message;
+  if (isUserMessage) {
+    div.classList.add('user-message'); 
+  }
+  output.appendChild(div);
+  div.scrollIntoView({ behavior: 'smooth', block: 'end' });
 }
 
-sendButton.addEventListener('click', () => {
+function sendMessage() {
   if (socket && socket.readyState === WebSocket.OPEN) {
     const message = input.value.trim();
     if (message.match(/^[a-zA-Z\s]+$/)) {
       socket.send(message);
+      showMessage(`${message}`, true); 
     } else {
       showMessage('Sorry, message is invalid');
     }
@@ -25,7 +29,9 @@ sendButton.addEventListener('click', () => {
   } else {
     showMessage('You are not connected to the server');
   }
-});
+}
+
+sendButton.addEventListener('click', sendMessage);
 
 connectButton.addEventListener('click', () => {
   if (!socket || socket.readyState === WebSocket.CLOSED) {
@@ -54,7 +60,6 @@ connectButton.addEventListener('click', () => {
   }
 });
 
-
 disconnectButton.addEventListener('click', () => {
   if (socket && socket.readyState !== WebSocket.CLOSED) {
     socket.close();
@@ -65,8 +70,6 @@ disconnectButton.addEventListener('click', () => {
 
 input.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
-    sendButton.click();
+    sendMessage();
   }
 });
-
-
