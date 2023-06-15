@@ -23,6 +23,7 @@ function sendMessage() {
       socket.send(message);
       showMessage(`${message}`, true); 
     } else {
+      showMessage(`${message}`, true); 
       showMessage('Sorry, message is invalid');
     }
     input.value = '';
